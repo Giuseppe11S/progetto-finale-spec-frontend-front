@@ -1,14 +1,22 @@
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+// import pages
+import SmartPhoneList from './components/SmartPhoneList'
+
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" 
+          element={<SmartPhoneList/>}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
