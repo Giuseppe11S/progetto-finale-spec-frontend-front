@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+// import prop
+import SmartPhoneCard from "./SmartPhoneCard";
 
 export default function SmartPhoneList(){
 
@@ -26,9 +28,15 @@ export default function SmartPhoneList(){
 
   return (
     <>
-    {dataSm.map((s) => (
-      <h1>{s.title}</h1>
-    ))}
+    <div className="flex justify-center flex-wrap mt-[50px] gap-[30px]">
+      {dataSm.map((s) => (
+        <SmartPhoneCard
+        key={s.id}
+        title={s.title}
+        category={s.category}
+        id={s.id}/>
+      ))}
+    </div>
     </>
   )
 }

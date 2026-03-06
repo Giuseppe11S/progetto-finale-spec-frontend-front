@@ -1,9 +1,13 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react'
+
+// import styling
 import './App.css'
+import Layout from './components/Layout';
 
 // import pages
 import SmartPhoneList from './components/SmartPhoneList'
+import SmartPhoneDetail from './components/SmartPhoneDetail';
 
 
 function App() {
@@ -12,8 +16,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" 
-          element={<SmartPhoneList/>}>
+          <Route path="/" element={<Layout />}>
+            {/* Home */}
+            <Route index element={<SmartPhoneList />} /> {/* Home */}
+            <Route path="/smartphone/:id" element={<SmartPhoneDetail />} /> {/* Detail page */}
           </Route>
         </Routes>
       </BrowserRouter>
