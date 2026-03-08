@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 
 // import prop
-import SmartPhoneCard from "./SmartPhoneCard";
+import SmartPhoneCard from "../components/SmartPhoneCard";
+import SearchBar from "../components/SearchBar";
 
 export default function SmartPhoneList(){
 
+  const [search, setSearch] = useState('')
   const [dataSm, setDataSm] = useState([])
+
+  const updateSearch = (e) => {
+    return setSearch(e.target.value);
+  }
   
   // call in get to have all the list
   const getSmartPhone = async () => {
@@ -26,10 +32,17 @@ export default function SmartPhoneList(){
     getSmartPhone();
   }, []);
 
+  // filter for searchbar
+  const filteredData = dataSm.filter((p) =>
+  p.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
+    <SearchBar
+    updateSearch={updateSearch}/>
     <div className="flex justify-center flex-wrap mt-[50px] gap-[30px]">
-      {dataSm.map((s) => (
+      {filteredData.map((s) => (
         <SmartPhoneCard
         key={s.id}
         title={s.title}

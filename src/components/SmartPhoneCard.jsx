@@ -13,9 +13,10 @@ export default function SmartPhoneCard({title, category, id }) {
         </ul>
       </div>
       <h2>{title}</h2>
-      <button className="text-center px-[50px] border w-[100%] cursor-pointer rounded-[6px]">
-         <Link to={`/smartphone/${id}`}>Dettagli</Link>
+     <Link to={`/smartphone/${id}`}> <button className="text-center px-[50px] border w-[100%] cursor-pointer rounded-[6px]">
+         Dettagli
       </button>
+      </Link>
     </div>
     </>
   )

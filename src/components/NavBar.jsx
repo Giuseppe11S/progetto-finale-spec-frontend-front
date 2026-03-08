@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import { Heart, Smartphone } from 'lucide-react';
 
 export default function NavBar(){
@@ -12,7 +12,11 @@ export default function NavBar(){
           size={40}/>
         </li>
         <li>
-          <h1 className="flex text-[24px] ml-[20px]">PhoneArena</h1>
+          <h1 className="flex text-[24px] ml-[20px]">
+            <NavLink to="/">
+             PhoneArena
+            </NavLink>
+            </h1>
         </li>
 
       </ul>
@@ -20,16 +24,16 @@ export default function NavBar(){
           {/* logo */}
             <li
             className="">
-              <Link to="/">Smartphone</Link>
+              <NavLink to="/">Smartphone</NavLink>
             </li>
             {/* favorite */}
             <li
             className="">
-              <Link><Heart/></Link>
+              <NavLink><Heart/></NavLink>
               </li>
             <li
             className="mr-[25px]"
-            ><Link>Comparatore</Link></li>
+            ><NavLink>Comparatore</NavLink></li>
         </ul>
     </div>
   </>

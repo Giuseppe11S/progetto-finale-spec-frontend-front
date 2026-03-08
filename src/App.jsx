@@ -6,8 +6,8 @@ import './App.css'
 import Layout from './components/Layout';
 
 // import pages
-import SmartPhoneList from './components/SmartPhoneList'
-import SmartPhoneDetail from './components/SmartPhoneDetail';
+import SmartPhoneList from './pages/SmartPhoneList'
+import SmartPhoneDetail from './pages/SmartPhoneDetail';
 
 
 function App() {
