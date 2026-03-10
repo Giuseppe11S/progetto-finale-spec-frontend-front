@@ -40,7 +40,7 @@ export default function SmartPhoneDetail(){
             <span className="font-semibold">Brand:</span> {eachProduct.smartphone.brand}
           </li>
           <li>
-            <span className="font-semibold">Price:</span> ${eachProduct.smartphone.price}
+            <span className="font-semibold">Price:</span> {eachProduct.smartphone.price}€
           </li>
           <li>
             <span className="font-semibold">Storage:</span> {eachProduct.smartphone.storage} GB

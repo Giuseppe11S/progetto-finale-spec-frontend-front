@@ -2,4 +2,9 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: rgba(128, 128, 128, 0.054);
+}
+
+.nav-bg{
+  background-color: white;
 }

@@ -1,18 +1,19 @@
 import { NavLink } from "react-router";
-import { Heart, Smartphone } from 'lucide-react';
+import { Heart, Smartphone, GitCompareArrows  } from 'lucide-react';
 
 export default function NavBar(){
 
   return (
     <>
-    <div className="flex h-[50px] border-b items-center py-[35px]">
-      <ul className="flex">
-        <li className="ml-[25px]">
+    <div className="flex justify-around py-[20px] items-center nav-bg border-b border-gray-200 shadow-sm">
+
+      <ul className="flex items-center">
+        <li className="ml-[25px] bg-cyan-500 text-white rounded-xl p-[5px]">
           <Smartphone 
-          size={40}/>
+          size={25}/>
         </li>
         <li>
-          <h1 className="flex text-[24px] ml-[20px]">
+          <h1 className="flex text-[22px] font-semibold text-cyan-500 ml-[20px]">
             <NavLink to="/">
              PhoneArena
             </NavLink>
@@ -20,21 +21,40 @@ export default function NavBar(){
         </li>
 
       </ul>
-        <ul className="flex justify-end w-[100%] gap-5">
+        <ul className="flex gap-5 ">
           {/* logo */}
             <li
-            className="">
-              <NavLink to="/">Smartphone</NavLink>
+            className="text-gray-400 text-[14px]">
+              <NavLink to="/" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
+              focus:bg-cyan-400 focus:text-white
+              transition
+              duration-200">
+                <Smartphone size={20}/>
+                <span>Smartphone</span>
+              </NavLink>
             </li>
             {/* favorite */}
             <li
-            className="">
-              <NavLink><Heart/></NavLink>
+            className="text-gray-400 text-[14px]">
+            <NavLink to="/" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
+              focus:bg-cyan-400 focus:text-white
+              transition
+              duration-200">
+              <Heart size={20}/>
+              <span>Preferiti</span>
+            </NavLink>
               </li>
             <li
-            className="mr-[25px]"
-            ><NavLink>Comparatore</NavLink></li>
-        </ul>
+            className="mr-[25px] text-gray-400 text-[14px]">
+            <NavLink to="/" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
+              focus:bg-cyan-400 focus:text-white
+              transition
+              duration-200">
+              <GitCompareArrows  size={20}/>
+              <span>Compara</span>
+            </NavLink>
+      </li>
+      </ul>
     </div>
   </>
   )
