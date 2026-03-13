@@ -1,16 +1,62 @@
-# React + Vite
+# PhoneArena 📱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una SPA per sfogliare, cercare, filtrare e confrontare smartphone. Progetto finale del corso Spec Frontend di Boolean, sviluppato interamente in React.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshots
 
-## React Compiler
+![Lista smartphone](screenshot_lista.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Pagina di dettaglio](screenshot_dettaglio.png)
 
-## Expanding the ESLint configuration
+![Comparatore](screenshot_comparatore.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![Preferiti](screenshot_preferiti.png)
+
+---
+
+## Cosa fa
+
+Puoi sfogliare una lista di smartphone, cercarli per nome, filtrarli per categoria (Flagship, Midrange, Budget) e ordinarli alfabeticamente. Ogni smartphone ha una pagina di dettaglio con tutte le specifiche.
+
+La parte più interessante è il comparatore — puoi selezionare fino a 2 smartphone e vederli affiancati in una tabella per confrontarne le caratteristiche. C'è anche un sistema di preferiti accessibile da tutta l'app.
+
+---
+
+## Tecnologie usate
+
+- **React** con React Router DOM per la navigazione
+- **Tailwind CSS** per lo styling
+- **Vite** come build tool
+- **Lucide React** per le icone
+- Backend REST già pronto fornito dal corso
+
+---
+
+## Come avviarlo in locale
+
+```bash
+git clone https://github.com/tuo-username/progetto-finale-spec-frontend-front
+cd progetto-finale-spec-frontend-front
+npm install
+npm run dev
+```
+
+> ⚠️ Il progetto richiede il backend del corso per funzionare. Contattami se vuoi provarlo in locale.
+
+---
+
+## Struttura
+
+```
+src/
+├── components/     → NavBar, SearchBar, SmartPhoneCard, Layout
+├── context/        → FavoritesContext, CompareContext
+├── pages/          → Lista, Dettaglio, Comparatore, Preferiti
+└── App.jsx
+```
+
+---
+
+Sviluppato da [tuo nome] — corso Spec Frontend, Boolean.
