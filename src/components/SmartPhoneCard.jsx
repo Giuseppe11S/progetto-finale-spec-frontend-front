@@ -1,9 +1,22 @@
 import { Heart, GitCompareArrows } from "lucide-react"
 import { Link } from "react-router-dom"
+import { useContext, useState } from "react";
+
+import { FavoritesContext } from "../context/FavoritesContext";
+import { CompareContext } from "../context/CompareContext";
 
 // layout of cards 
 
-export default function SmartPhoneCard({title, category, id, brand, price, ram, display, battery, storage, releaseYear }) {
+export default function SmartPhoneCard({title, category, id, brand, price, ram, display,
+   battery, storage, releaseYear}) {
+
+
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { compares, setCompares } = useContext(CompareContext);
+
+  // toggle for button heart and compare
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isCompare, setIsCompare] = useState(false);
 
   // background color and text color for badge 
   const badgeColor = {
@@ -11,6 +24,30 @@ export default function SmartPhoneCard({title, category, id, brand, price, ram, 
     midrange: 'bg-blue-100 text-blue-700',
     budget: 'bg-green-100 text-green-700'
   }
+
+  const addFavorite = () => {
+  setIsFavorite(!isFavorite)
+  if (favorites.find(f => f.id === id)) { 
+    setFavorites(favorites.filter(f => f.id !== id)) 
+  } else {
+    setFavorites([...favorites, {title, category, id, brand, price, ram, display, battery, storage, releaseYear}])
+  }
+ }
+
+const addCompare = () => {
+  setIsCompare(!isCompare)
+  if (compares.find(c => c.id === id)) {
+    setCompares(compares.filter(c => c.id !== id))
+  } else {
+    if (compares.length >= 2) {
+      // remove item
+      const removeLast = compares.slice(1)
+      setCompares([...removeLast, {title, category, id, brand, price, ram, display, battery, storage, releaseYear}])
+    } else {
+      setCompares([...compares, {title, category, id, brand, price, ram, display, battery, storage, releaseYear}])
+    }
+  }
+}
 
   return (
     <>
@@ -22,13 +59,18 @@ export default function SmartPhoneCard({title, category, id, brand, price, ram, 
         <span className={`${badgeColor[category]} px-[9px] font-semibold py-[4px] rounded-[10px] text-[13px]`}>{category}</span>
         <ul className="flex gap-4">
           <li className="cursor-pointer text-gray-500">
-            <Heart 
+            <Heart
+            className={`hover:text-red-500 transition
+            ${isFavorite ? 'text-red-500' : null}`}
             size={18}
+            onClick={addFavorite}
             />
             </li>
           <li className="cursor-pointer text-gray-500">
             <GitCompareArrows 
-            size={18}/>
+            className={`hover:text-cyan-500 transition ${isCompare ? 'text-cyan-500' : null}`}
+            size={18}
+            onClick={addCompare}/>
           </li>
         </ul>
       </div>
@@ -38,7 +80,7 @@ export default function SmartPhoneCard({title, category, id, brand, price, ram, 
         <h2 className="text-[19px] font-semibold ">{title}</h2>
 
         <div className="flex justify-between mt-[5px] items-center">
-          <h3 className="text-[21px]">€{price}</h3>
+          <h3 className="text-[21px] text-cyan-500 font-semibold">€{price}</h3>
           <span className="text-[14px] text-gray-500">{releaseYear}</span>
         </div>
 

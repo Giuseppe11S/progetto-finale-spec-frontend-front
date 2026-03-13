@@ -1,11 +1,17 @@
 import { NavLink } from "react-router";
 import { Heart, Smartphone, GitCompareArrows  } from 'lucide-react';
+import { useContext, useState } from "react";
+import { FavoritesContext } from "../context/FavoritesContext";
+import { CompareContext } from "../context/CompareContext";
 
 export default function NavBar(){
 
+  const { favorites } = useContext(FavoritesContext);
+  const { compares } = useContext(CompareContext);
+
   return (
     <>
-    <div className="flex justify-around py-[20px] items-center nav-bg border-b border-gray-200 shadow-sm">
+    <div className="flex justify-around py-[20px] items-center nav-bg shadow-sm">
 
       <ul className="flex items-center">
         <li className="ml-[25px] bg-cyan-500 text-white rounded-xl p-[5px]">
@@ -36,22 +42,22 @@ export default function NavBar(){
             {/* favorite */}
             <li
             className="text-gray-400 text-[14px]">
-            <NavLink to="/" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
+            <NavLink to="/favorite" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
               focus:bg-cyan-400 focus:text-white
               transition
               duration-200">
               <Heart size={20}/>
-              <span>Preferiti</span>
+              <span>Preferiti {favorites.length === 0 ? null : favorites.length}</span>
             </NavLink>
               </li>
             <li
             className="mr-[25px] text-gray-400 text-[14px]">
-            <NavLink to="/" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
+            <NavLink to="/compare" className="flex items-center gap-2 px-[10px] py-[5px] rounded-xl
               focus:bg-cyan-400 focus:text-white
               transition
               duration-200">
               <GitCompareArrows  size={20}/>
-              <span>Compara</span>
+              <span>Compara {compares.length === 0 ? null : compares.length}</span>
             </NavLink>
       </li>
       </ul>
