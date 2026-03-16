@@ -15,8 +15,8 @@ export default function SmartPhoneCard({title, category, id, brand, price, ram, 
   const { compares, setCompares } = useContext(CompareContext);
 
   // toggle for button heart and compare
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isCompare, setIsCompare] = useState(false);
+  const isFavorite = favorites.find((f) => f.id == id)
+  const isCompare = compares.find((f) => f.id == id)
 
   // background color and text color for badge 
   const badgeColor = {

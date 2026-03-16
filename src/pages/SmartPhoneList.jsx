@@ -10,10 +10,13 @@ export default function SmartPhoneList(){
   const [badget, setBadget] = useState('')
   const [dataSm, setDataSm] = useState([])
   const [sortOrder, setSortOrder] = useState('')
+  const [debouncedValue, setDebouncedValue] = useState('')
 
   const updateSearch = (e) => {
     return setSearch(e.target.value);
   }
+
+
   
   // call in get to have all the list
   const getSmartPhone = async () => {
@@ -35,12 +38,12 @@ export default function SmartPhoneList(){
       })
     );
     
-    setDataSm(fullData);
+      setDataSm(fullData);
+      }
+      catch(error) {
+        console.error('Non è stato possibile effettuare la chiamata API')
+      }
     }
-    catch(error) {
-      console.error('Non è stato possibile effettuare la chiamata API')
-    }
-  }
 
       useEffect(() => {
       getSmartPhone();
@@ -49,12 +52,21 @@ export default function SmartPhoneList(){
     // filter for searchbar
     const filteredData = dataSm.filter((p) =>
     // filter for input user
-    p.title.toLowerCase().includes(search.toLowerCase()))
+    p.title.toLowerCase().includes(debouncedValue.toLowerCase()))
     // filter for input type badget
-    .filter(p => !badget || p.category === badget) 
+    .filter(p => !badget || p.category === badget)
 
     // amount of products avaible:
     const amountProducts = filteredData.length;
+
+    // debounce for user input
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setDebouncedValue(search)
+      }, 300) // update only after 500ms
+
+      return () => clearTimeout(timer)
+    }, [search])
 
     // type of badge
     const budgetType = (e) => {
@@ -63,11 +75,14 @@ export default function SmartPhoneList(){
 
     const updateSort = (e) => setSortOrder(e.target.value)
 
+    // order sorted 
     const sortedData = [...filteredData].sort((a, b) => {
       if (sortOrder === 'title-az') return a.title.localeCompare(b.title)
       if (sortOrder === 'title-za') return b.title.localeCompare(a.title)
       return 0
     })
+
+
     
   return (
     <>
