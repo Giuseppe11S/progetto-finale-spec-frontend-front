@@ -59,4 +59,4 @@ src/
 
 ---
 
-Sviluppato da [tuo nome] — corso Spec Frontend, Boolean.
+Sviluppato da [Giuseppe Sena] — corso Spec Frontend, Boolean.
